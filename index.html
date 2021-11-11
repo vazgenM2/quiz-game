@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+
+	<div class="wrapper">
+		<!-- ======= First screen ======================= -->
+		<div class="home-page center">
+			<h1 class="title">Quiz game</h1>
+			<button class="btn start-btn">Start</button>
+		</div>
+
+		<div class="quiz-board">
+			<div class="quiz-info">
+				<p> <span class="current-q"></span> / <span class="all-q"></span> question</p>
+				<p>Time: <span class="minute-q"></span>:<span class="second-q"></span></p>
+			</div>
+			<div class="quiz-main">
+				<p class="question"></p>
+				<hr class="hr">
+				<p class="variant" data-value="a"></p>
+				<p class="variant" data-value="b"></p>
+				<p class="variant" data-value="c"></p>
+				<p class="variant" data-value="d"></p>
+			</div>
+			<div class="quiz-bottom">
+				<button class="quiz-next-btn prev">Prev</button>
+				<button class="quiz-next-btn next">Next</button>
+				<button class="quiz-next-btn finish">Finish</button>
+			</div>
+		</div>
+
+		<div class="check-board">
+			<p class="title">Checking answers</p>
+			<span class="result-info"></span>
+		</div>
+
+	</div>
+
+
+	<script src="./main.js"></script>
+</body>
+
+</html>

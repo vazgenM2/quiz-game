@@ -1,0 +1,33 @@
+{
+	"time": {
+		"minute": 0,
+		"second": 11
+	},
+	"about": "Javascript basic",
+	"questions": [
+		{
+			"q": "String is ...",
+			"a": "Expresses a true false statement",
+			"b": "An contain letters, numbers, spaces, and symbols.",
+			"c": "takes in an input, does something with it, and then returns an output.",
+			"d": "Runs a boolean (true/false) statement based on data entered",
+			"currect": "b"
+		},
+		{
+			"q": "To display writing on the screen you must include this direction",
+			"a": "Document Write",
+			"b": "documentWrite",
+			"c": "document.write()",
+			"d": "document.write",
+			"currect": "c"
+		},
+		{
+			"q": "Variable is ...",
+			"a": "Expresses a true false statement",
+			"b": "takes in an input, does something with it, and then returns an output",
+			"c": "Runs a boolean (true/false) statement based on data entered",
+			"d": "stores a string, number, or boolean, and gives it a specific, case-sensitive name",
+			"currect": "d"
+		}
+	]
+}
