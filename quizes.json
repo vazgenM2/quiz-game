@@ -1,25 +1,17 @@
 {
 	"time": {
-		"minute": 0,
-		"second": 11
+		"minute": 3,
+		"second": 0
 	},
 	"about": "Javascript basic",
 	"questions": [
-		{
-			"q": "String is ...",
-			"a": "Expresses a true false statement",
-			"b": "An contain letters, numbers, spaces, and symbols.",
-			"c": "takes in an input, does something with it, and then returns an output.",
-			"d": "Runs a boolean (true/false) statement based on data entered",
-			"currect": "b"
-		},
 		{
 			"q": "To display writing on the screen you must include this direction",
 			"a": "Document Write",
 			"b": "documentWrite",
 			"c": "document.write()",
 			"d": "document.write",
-			"currect": "c"
+			"correct": "c"
 		},
 		{
 			"q": "Variable is ...",
@@ -27,7 +19,71 @@
 			"b": "takes in an input, does something with it, and then returns an output",
 			"c": "Runs a boolean (true/false) statement based on data entered",
 			"d": "stores a string, number, or boolean, and gives it a specific, case-sensitive name",
-			"currect": "d"
+			"correct": "d"
+		},
+		{
+			"q": "String is ...",
+			"a": "Expresses a true false statement",
+			"b": "An contain letters, numbers, spaces, and symbols.",
+			"c": "takes in an input, does something with it, and then returns an output.",
+			"d": "Runs a boolean (true/false) statement based on data entered",
+			"correct": "b"
+		},
+		{
+			"q": "Which one of the following symbols is used for JavaScript comments?",
+			"a": "\\\\",
+			"b": "^",
+			"c": "//",
+			"d": "?",
+			"correct": "c"
+		},
+		{
+			"q": "How do I declare a new variable?",
+			"a": "var newVariable = 5",
+			"b": "Variable int = new Variable()",
+			"c": "var 5 = myVariable",
+			"d": "int var = 5",
+			"correct": "a"
+		},
+		{
+			"q": "Which one of the following is the symbol for implementing the AND operator?",
+			"a": "**",
+			"b": "||",
+			"c": "&&",
+			"d": "++",
+			"correct": "c"
+		},
+		{
+			"q": "What character do we use for multiplication?",
+			"a": "#",
+			"b": "x",
+			"c": "*",
+			"d": "/",
+			"correct": "c"
+		},
+		{
+			"q": "What type of variable is - var typeOfApples='Fuji' ",
+			"a": "Int",
+			"b": "Float",
+			"c": "Boolean",
+			"d": "String",
+			"correct": "d"
+		},
+		{
+			"q": "What is CSS used for?",
+			"a": "styling web pages",
+			"b": "formatting script correctly",
+			"c": "client side scripting",
+			"d": "server side scripting",
+			"correct": "a"
+		},
+		{
+			"q": "How do we generate a random number?",
+			"a": "Math.random()",
+			"b": "random.number()",
+			"c": "number.random()",
+			"d": "Random.math()",
+			"correct": "a"
 		}
 	]
 }

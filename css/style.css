@@ -49,6 +49,7 @@ body {
 .home-page .btn {
   width: 250px;
   height: 65px;
+  margin-top: 20px;
   background-color: #8854C0;
   border: none;
   outline: none;
@@ -161,7 +162,7 @@ body {
   background-color: #df9e26;
 }
 
-.check-board {
+.check-board, .create-board {
   position: relative;
   display: none;
   margin: 5% auto;
@@ -173,35 +174,35 @@ body {
   padding: 20px;
 }
 
-.check-board .title {
+.check-board .title, .create-board .title {
   font-size: 30px;
   text-decoration: underline;
   margin-top: 0;
 }
 
-.check-board .q {
+.check-board .q, .create-board .q {
   margin-top: 0;
   margin-bottom: 0;
   font-size: 25px;
   font-style: italic;
 }
 
-.check-board .answer {
+.check-board .answer, .create-board .answer {
   font-size: 20px;
   background-color: #6C4298;
   padding: 10px 20px;
   border-radius: 5px;
 }
 
-.check-board .answer.true {
+.check-board .answer.true, .create-board .answer.true {
   background-color: #0cb80c !important;
 }
 
-.check-board .answer.false {
+.check-board .answer.false, .create-board .answer.false {
   background-color: #bd0a0a !important;
 }
 
-.check-board .board-top {
+.check-board .board-top, .create-board .board-top {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -210,8 +211,55 @@ body {
           justify-content: space-between;
 }
 
-.check-board .result-info {
+.check-board .result-info, .create-board .result-info {
   position: absolute;
   right: 20px;
   top: 20px;
+}
+
+.create-board {
+  height: 100%;
+}
+
+.create-board .add-q {
+  width: 50px;
+  height: 50px;
+  background-color: #8854C0;
+  color: #fff;
+  font-weight: bold;
+  font-size: 28px;
+  cursor: pointer;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.create-board .add-q:hover {
+  background-color: #fff;
+  color: #8854C0;
+}
+
+.create-board input.q {
+  background-color: transparent;
+  color: #fff;
+  font-size: 30px;
+  border: none;
+  border-bottom: 2px solid #fff;
+  outline: none;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.create-board input.answer {
+  margin-top: 10px;
+  display: block;
+  width: 50%;
+  color: #fff;
+  font-size: 25px;
+  border: none;
+  border-bottom: 2px solid #fff;
+  outline: none;
+  background-color: transparent;
 }

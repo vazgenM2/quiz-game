@@ -49,6 +49,80 @@ window.onload = function () {
 			}
 		})
 
+		// ==== Create quiz button
+		let quiz = {}
+		let questionsCount = 0
+
+		document.querySelector('.create-btn').addEventListener('click', () => {
+			document.querySelector('.home-page').style.display = 'none'
+			document.querySelector('.check-board').style.display = 'none'
+			document.querySelector('.create-board').style.display = 'block'
+
+			questionsCount = 0
+			quiz = {
+				"time": {
+					"minute": 2,
+					"second": 0
+				},
+				"about": "Javascript basic",
+				"questions": [
+
+				]
+			}
+		})
+
+		// ==== Add question
+		document.querySelector('.add-q').addEventListener('click', () => {
+			questionsCount++
+			let q = document.createElement('input')
+			q.classList.add('q')
+			q.placeholder = 'Enter question'
+
+			// ==== Answers generating
+			let a = document.createElement('input')
+			a.placeholder = 'Option A'
+			a.classList.add('answer')
+			let b = document.createElement('input')
+			b.placeholder = 'Option B'
+			b.classList.add('answer')
+			let c = document.createElement('input')
+			c.placeholder = 'Option C'
+			c.classList.add('answer')
+			let d = document.createElement('input')
+			d.placeholder = 'Option D'
+			d.classList.add('answer')
+
+			let textSelect = document.createElement('span')
+			textSelect.innerHTML = 'Correct answer: '
+			let select = document.createElement('select')
+			let letters = 'abcd'
+			for (let i = 0; i < 4; i++) {
+				let opt = document.createElement('option')
+				opt.value = letters[i]
+				opt.innerHTML = letters[i]
+				select.appendChild(opt)
+			}
+
+			let count = document.createElement('p')
+			count.classList.add('title')
+			count.style.marginBottom = 0
+			count.innerHTML = 'Question - ' + questionsCount + ')'
+
+			document.querySelector('.create-board').appendChild(document.createElement('br'))
+			document.querySelector('.create-board').appendChild(count)
+			document.querySelector('.create-board').appendChild(q)
+			document.querySelector('.create-board').appendChild(a)
+			document.querySelector('.create-board').appendChild(b)
+			document.querySelector('.create-board').appendChild(c)
+			document.querySelector('.create-board').appendChild(d)
+			document.querySelector('.create-board').appendChild(document.createElement('br'))
+			document.querySelector('.create-board').appendChild(textSelect)
+			document.querySelector('.create-board').appendChild(select)
+			document.querySelector('.create-board').appendChild(document.createElement('br'))
+			document.querySelector('.create-board').appendChild(document.createElement('br'))
+			document.querySelector('.create-board').appendChild(document.querySelector('.add-q'))
+		})
+
 		// ============ Question and Variants
 		let questionNumber = 1
 		let resultObj = {}
@@ -142,36 +216,36 @@ window.onload = function () {
 				d.classList.add('answer')
 
 				switch (resultObj[i + 1]) {
-					case 'a': if (questions.currect === 'a') {
+					case 'a': if (questions.correct === 'a') {
 						a.classList.add('true')
 						trueAnswers++
 					} else {
 						a.classList.add('false')
-						showTrueAnswer(questions.currect)
+						showTrueAnswer(questions.correct)
 					} break;
-					case 'b': if (questions.currect === 'b') {
+					case 'b': if (questions.correct === 'b') {
 						b.classList.add('true')
 						trueAnswers++
 					} else {
 						b.classList.add('false')
-						showTrueAnswer(questions.currect)
+						showTrueAnswer(questions.correct)
 					} break;
-					case 'c': if (questions.currect === 'c') {
+					case 'c': if (questions.correct === 'c') {
 						c.classList.add('true')
 						trueAnswers++
 					} else {
 						c.classList.add('false')
-						showTrueAnswer(questions.currect)
+						showTrueAnswer(questions.correct)
 					} break;
-					case 'd': if (questions.currect === 'd') {
+					case 'd': if (questions.correct === 'd') {
 						d.classList.add('true')
 						trueAnswers++
 					} else {
 						d.classList.add('false')
-						showTrueAnswer(questions.currect)
+						showTrueAnswer(questions.correct)
 					} break;
 				}
-				if (!resultObj[i + 1]) showTrueAnswer(questions.currect, 'false')
+				if (!resultObj[i + 1]) showTrueAnswer(questions.correct, 'false')
 
 				function showTrueAnswer(trueAnswer, paste = 'true') {
 					if (trueAnswer === 'a') a.classList.add(paste)
