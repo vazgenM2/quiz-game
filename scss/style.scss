@@ -95,7 +95,6 @@ body {
 			}
 			.finish {
 				display: none;
-				// justify-self: flex-end;
 			}
 		}
 	}
@@ -108,6 +107,7 @@ body {
 
 	}
 	.variant {
+		min-height: 27px;
 		font-size: 20px;
 		background-color: #6C4298;
 		padding: 10px 20px;
@@ -179,6 +179,41 @@ body {
 		color: #fff;
 		font-weight: bold;
 		font-size: 28px;
+		cursor: pointer;
+		border-radius: 5px;
+		outline: none;
+		border: none;
+		transition: 0.4s;
+		&:hover {
+			background-color: #fff;
+			color: #8854C0;
+		}
+	}
+	.time-inp {
+		background-color: transparent;
+		border: none;
+		outline: none;
+		border-bottom: 2px solid #fff;
+		color: #fff;
+		margin-bottom: 10px;
+		font-size: 18px;
+		width: 100px;
+		text-align: center;
+		&::placeholder {
+			color: #ffffff90;
+			font-style: italic;
+			font-size: 14px;
+		}
+	}
+	.create-quiz-btn {
+		width: 250px;
+		height: 50px;
+		display: none;
+		margin-top: 20px;
+		background-color: #8854C0;
+		color: #fff;
+		font-weight: bold;
+		font-size: 22px;
 		cursor: pointer;
 		border-radius: 5px;
 		outline: none;

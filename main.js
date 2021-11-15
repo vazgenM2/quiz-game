@@ -7,6 +7,14 @@ window.onload = function () {
 		})
 
 	function whenGenerateQuiz(game) {
+		quiz = {
+			"time": {
+				"minute": 2,
+				"second": 0
+			},
+			"about": "Javascript basic",
+			"questions": []
+		}
 		// Time generating
 		let timer;
 		document.querySelector('.minute-q').innerHTML = game.time.minute
@@ -17,14 +25,18 @@ window.onload = function () {
 		document.querySelector('.all-q').innerHTML = game.questions.length
 
 		// ============== Home page button
-		document.querySelector(".start-btn").addEventListener('click', () => {
+		document.querySelector(".start-btn").addEventListener('click', startGame)
+
+		function startGame(quiz = undefined) {
 			document.querySelector('.home-page').style.display = 'none'
+			document.querySelector('.create-board').style.display = 'none'
 			document.querySelector('.quiz-board').style.display = 'block'
 			document.querySelector('.finish').style.display = 'none'
 
-
 			// ===================== Run Timer
-			let gameTime = {
+			let gameTime = {}
+
+			gameTime = {
 				m: game.time.minute,
 				s: game.time.second
 			}
@@ -47,10 +59,9 @@ window.onload = function () {
 				if (gameTime.s < 10) gameTime.s = '0' + gameTime.s
 				document.querySelector('.second-q').innerHTML = gameTime.s
 			}
-		})
+		}
 
 		// ==== Create quiz button
-		let quiz = {}
 		let questionsCount = 0
 
 		document.querySelector('.create-btn').addEventListener('click', () => {
@@ -65,36 +76,67 @@ window.onload = function () {
 					"second": 0
 				},
 				"about": "Javascript basic",
-				"questions": [
-
-				]
+				"questions": []
 			}
 		})
+
+		document.querySelector('.time-inp').onchange = (e) => {
+			let arr = e.target.value.split(':').map(Number)
+			if (arr[0] < 0 || Number(arr[0]) !== arr[0]) {
+				arr[0] = 0
+			}
+			if (arr[1] < 0 || arr[1] > 59 || Number(arr[1]) !== arr[1]) {
+				arr[1] = 0
+			}
+			quiz.time.minute = arr[0]
+			quiz.time.second = arr[1]
+		}
 
 		// ==== Add question
 		document.querySelector('.add-q').addEventListener('click', () => {
 			questionsCount++
+			quiz.questions.push({
+				a: '',
+				b: '',
+				c: '',
+				d: '',
+				q: '',
+				correct: 'a',
+			})
 			let q = document.createElement('input')
 			q.classList.add('q')
 			q.placeholder = 'Enter question'
-
+			q.id = questionsCount - 1
+			q.onchange = (e) => quiz.questions[q.id].q = e.target.value
 			// ==== Answers generating
 			let a = document.createElement('input')
 			a.placeholder = 'Option A'
 			a.classList.add('answer')
+			a.id = questionsCount - 1
+			a.onchange = (e) => quiz.questions[a.id].a = e.target.value
+
 			let b = document.createElement('input')
 			b.placeholder = 'Option B'
 			b.classList.add('answer')
+			b.id = questionsCount - 1
+			b.onchange = (e) => quiz.questions[b.id].b = e.target.value
+
 			let c = document.createElement('input')
 			c.placeholder = 'Option C'
 			c.classList.add('answer')
+			c.id = questionsCount - 1
+			c.onchange = (e) => quiz.questions[c.id].c = e.target.value
+
 			let d = document.createElement('input')
 			d.placeholder = 'Option D'
+			d.id = questionsCount - 1
 			d.classList.add('answer')
+			d.onchange = (e) => quiz.questions[d.id].d = e.target.value
 
 			let textSelect = document.createElement('span')
 			textSelect.innerHTML = 'Correct answer: '
 			let select = document.createElement('select')
+			select.id = questionsCount - 1
 			let letters = 'abcd'
 			for (let i = 0; i < 4; i++) {
 				let opt = document.createElement('option')
@@ -102,6 +144,9 @@ window.onload = function () {
 				opt.innerHTML = letters[i]
 				select.appendChild(opt)
 			}
+			select.onchange = (e) => quiz.questions[select.id].correct = e.target.value
+
+			if (questionsCount >= 2) document.querySelector('.create-quiz-btn').style.display = 'block'
 
 			let count = document.createElement('p')
 			count.classList.add('title')
@@ -121,7 +166,32 @@ window.onload = function () {
 			document.querySelector('.create-board').appendChild(document.createElement('br'))
 			document.querySelector('.create-board').appendChild(document.createElement('br'))
 			document.querySelector('.create-board').appendChild(document.querySelector('.add-q'))
+			document.querySelector('.create-board').appendChild(document.querySelector('.create-quiz-btn'))
 		})
+
+		//  ======= Save and Start button
+		document.querySelector('.create-quiz-btn').addEventListener('click', () => {
+			// Timer
+			gameTime = {
+				m: quiz.time.minute,
+				s: quiz.time.second
+			}
+			document.querySelector('.minute-q').innerHTML = gameTime.m
+			if (gameTime.s < 10) gameTime.s = '0' + gameTime.s
+			document.querySelector('.second-q').innerHTML = gameTime.s
+
+			document.querySelector('.all-q').innerHTML = quiz.questions.length
+
+			// Questions and answers
+			document.querySelector('.question').innerHTML = '1) ' + quiz.questions[0].q
+			document.querySelectorAll('.variant')[0].innerHTML = 'a) ' + quiz.questions[0].a
+			document.querySelectorAll('.variant')[1].innerHTML = 'b) ' + quiz.questions[0].b
+			document.querySelectorAll('.variant')[2].innerHTML = 'c) ' + quiz.questions[0].c
+			document.querySelectorAll('.variant')[3].innerHTML = 'd) ' + quiz.questions[0].d
+
+			startGame(quiz)
+		})
+
 
 		// ============ Question and Variants
 		let questionNumber = 1
@@ -130,6 +200,7 @@ window.onload = function () {
 
 		// =========================== Change question function
 		function setQuestion() {
+			if (quiz.questions.length) game = quiz
 			document.querySelector('.question').innerHTML = questionNumber + ') ' + game.questions[questionNumber - 1].q
 			let letters = 'abcd'
 			let options = document.querySelectorAll('.variant')
@@ -186,6 +257,8 @@ window.onload = function () {
 		document.querySelector('.quiz-next-btn.finish').addEventListener('click', () => {
 			if (Object.keys(resultObj).length === game.questions.length) {
 				finishBoard()
+			} else {
+				alert('Please fill all the questions!')
 			}
 		})
 		function finishBoard() {
