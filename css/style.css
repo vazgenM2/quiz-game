@@ -189,6 +189,7 @@ body {
 }
 
 .check-board .answer, .create-board .answer {
+  min-height: 27px;
   font-size: 20px;
   background-color: #6C4298;
   padding: 10px 20px;

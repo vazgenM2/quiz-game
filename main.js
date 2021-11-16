@@ -7,7 +7,7 @@ window.onload = function () {
 		})
 
 	function whenGenerateQuiz(game) {
-		quiz = {
+		let quiz = {
 			"time": {
 				"minute": 2,
 				"second": 0
@@ -27,7 +27,7 @@ window.onload = function () {
 		// ============== Home page button
 		document.querySelector(".start-btn").addEventListener('click', startGame)
 
-		function startGame(quiz = undefined) {
+		function startGame() {
 			document.querySelector('.home-page').style.display = 'none'
 			document.querySelector('.create-board').style.display = 'none'
 			document.querySelector('.quiz-board').style.display = 'block'
@@ -36,9 +36,16 @@ window.onload = function () {
 			// ===================== Run Timer
 			let gameTime = {}
 
-			gameTime = {
-				m: game.time.minute,
-				s: game.time.second
+			if (quiz.questions.length) {
+				gameTime = {
+					m: quiz.time.minute,
+					s: quiz.time.second
+				}
+			} else {
+				gameTime = {
+					m: game.time.minute,
+					s: game.time.second
+				}
 			}
 			timer = setInterval(() => {
 				if (gameTime.s > 0) gameTime.s--
